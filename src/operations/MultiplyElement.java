@@ -10,7 +10,7 @@ public class MultiplyElement extends AbstractOperation{
     private final int targetRow;
 
 
-    public MultiplyElement(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors, int sourceRow, int column, int targetRow){
+    public MultiplyElement(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors, int sourceRow, int column, int targetRow){
         super(matrix, eliminationFactors, normalizationFactors);
         this.sourceRow = sourceRow;
         this.column = column;
@@ -20,7 +20,10 @@ public class MultiplyElement extends AbstractOperation{
 
     @Override
     public Void call() {
-        matrix[targetRow][column] *= eliminationFactors[sourceRow][targetRow];
+        if (eliminationFactors[sourceRow][targetRow] == null)
+            return null;
+        else
+            matrix[targetRow][column] *= eliminationFactors[sourceRow][targetRow];
         return null;
     }
 

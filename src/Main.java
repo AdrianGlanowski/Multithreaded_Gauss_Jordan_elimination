@@ -3,7 +3,9 @@ import java.io.IOException;
 public class Main{
     public static void main(String[] args) throws IOException {
 
-        String filename = "100x100";
+        String size = args[0];
+        String filename = "%sx%s".formatted(size, size);
+        System.out.println(filename);
         FileManager fileManager = new FileManager();
         double[][] matrix = fileManager.importMatrix("examples/input/%s.txt".formatted(filename));
 

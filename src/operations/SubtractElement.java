@@ -8,7 +8,7 @@ public class SubtractElement extends AbstractOperation{
     private final int column;
     private final int targetRow;
 
-    public SubtractElement(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors, int sourceRow, int column, int targetRow){
+    public SubtractElement(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors, int sourceRow, int column, int targetRow){
         super(matrix, eliminationFactors, normalizationFactors);
         this.sourceRow = sourceRow;
         this.column = column;
@@ -18,7 +18,11 @@ public class SubtractElement extends AbstractOperation{
 
     @Override
     public Void call() {
-        matrix[targetRow][column] -= matrix[sourceRow][column];
+        if (eliminationFactors[sourceRow][targetRow] != null)
+            if (column != sourceRow)
+                matrix[targetRow][column] -= matrix[sourceRow][column];
+            else
+                matrix[targetRow][column] = 0; //stability
         return null;
     }
 

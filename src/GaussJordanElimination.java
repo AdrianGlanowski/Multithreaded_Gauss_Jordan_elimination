@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class GaussJordanElimination {
     private final ExecutorService executorService;
@@ -17,8 +16,29 @@ public class GaussJordanElimination {
 
 
     public final void solve(double[][] matrix) throws InterruptedException {
-        double[][] eliminationFactors = new double[matrix.length][matrix.length];
-        double[] normalizationFactors = new double[matrix.length];
+        Double[][] eliminationFactors = new Double[matrix.length][matrix.length];
+        Double[] normalizationFactors = new Double[matrix.length];
+
+        for (int sourceRow = 0; sourceRow < matrix.length; ++sourceRow) {
+            // Find the row with the largest absolute value in the current column
+            int maxRow = sourceRow;
+            double maxValue = Math.abs(matrix[sourceRow][sourceRow]);
+
+            for (int swapRow = sourceRow + 1; swapRow < matrix.length; ++swapRow) {
+                double candidate = Math.abs(matrix[swapRow][sourceRow]);
+                if (candidate > maxValue) {
+                    maxValue = candidate;
+                    maxRow = swapRow;
+                }
+            }
+
+            // Swap only if the max row is different from current
+            if (maxRow != sourceRow) {
+                double[] temp = matrix[maxRow];
+                matrix[maxRow] = matrix[sourceRow];
+                matrix[sourceRow] = temp;
+            }
+        }
 
         for (int sourceRow=0; sourceRow<matrix.length; ++sourceRow){
             List<Callable<Void>> A_tasks = new ArrayList<>(List.of());
@@ -35,7 +55,9 @@ public class GaussJordanElimination {
                 if (targetRow<sourceRow){
                     B_tasks.add(new MultiplyElement(matrix, eliminationFactors, normalizationFactors, sourceRow, targetRow, targetRow));
                 }
-                for (int column=sourceRow; column<matrix[0].length; ++column){
+
+                //skoro go zeruje, to nie musze mnozyc
+                for (int column=sourceRow+1; column<matrix[0].length; ++column){
                     B_tasks.add(new MultiplyElement(matrix, eliminationFactors, normalizationFactors, sourceRow, column, targetRow));
                 }
 
@@ -65,24 +87,6 @@ public class GaussJordanElimination {
         runCurrentTasks(E_tasks);
         executorService.shutdown();
     }
-
-//    private void runCurrentTasks(List<Runnable> tasks) {
-//        List<Future<?>> futures = new ArrayList<>();
-//
-//        for (Runnable task : tasks) {
-//            futures.add(executorService.submit(task));
-//        }
-//
-//        for (Future<?> f : futures) {
-//            try {
-//                f.get(); // waits correctly
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//        tasks.clear();
-//    }
 
     private void runCurrentTasks(List<Callable<Void>> tasks) throws InterruptedException {
         executorService.invokeAll(tasks);

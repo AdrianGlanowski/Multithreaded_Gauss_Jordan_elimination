@@ -6,10 +6,10 @@ public abstract class AbstractOperation implements Callable<Void> {
     protected int sourceRow;
     protected char operationSymbol;
     protected double[][] matrix;
-    protected double[][] eliminationFactors;
-    protected double[] normalizationFactors;
+    protected Double[][] eliminationFactors;
+    protected Double[] normalizationFactors;
 
-    AbstractOperation(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors){
+    AbstractOperation(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors){
         this.matrix = matrix;
         this.eliminationFactors = eliminationFactors;
         this.normalizationFactors = normalizationFactors;

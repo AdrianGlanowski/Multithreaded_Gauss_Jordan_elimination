@@ -67,13 +67,13 @@ public class Checker {
                     // if it is not 1.0 - print it to the output and exit
                     if (!MyMatrix.compare(1., processed.lhs[i][j], epsilon)) {
                         System.out.println("Error 1 " + i + " " + j);
-                        System.exit(0);
+//                        System.exit(0);
                     }
                     //if  not diagonal - should be 0.0
                 } else if (!MyMatrix.compare(0., processed.lhs[i][j], epsilon)) {
                     // if it is not 0.0 - print it to the output and exit
                     System.out.println("Error 2 " + i + " " + j);
-                    System.exit(0);
+//                    System.exit(0);
                 }
             }
         }
@@ -98,7 +98,7 @@ public class Checker {
                 // if it is not equal - print it to the output and exit
                 System.out.println("Error 3 " + (processed.size + 1) + " " + j);
                 System.out.println(x.getArray()[j][0] + " " + processed.rhs[j][0]);
-                System.exit(0);
+//                System.exit(0);
             }
         }
     }
