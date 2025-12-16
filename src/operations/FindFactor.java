@@ -15,8 +15,9 @@ public class FindFactor extends AbstractOperation {
     }
 
     @Override
-    public void run() {
+    public Void call() {
         eliminationFactors[sourceRow][targetRow] = matrix[sourceRow][sourceRow]/matrix[targetRow][sourceRow];
+        return null;
     }
 
     @Override

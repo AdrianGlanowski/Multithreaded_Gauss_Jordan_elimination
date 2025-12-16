@@ -17,8 +17,9 @@ public class SubtractElement extends AbstractOperation{
     }
 
     @Override
-    public void run() {
+    public Void call() {
         matrix[targetRow][column] -= matrix[sourceRow][column];
+        return null;
     }
 
     @Override

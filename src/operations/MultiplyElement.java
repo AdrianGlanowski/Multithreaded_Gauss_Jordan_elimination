@@ -19,8 +19,9 @@ public class MultiplyElement extends AbstractOperation{
     }
 
     @Override
-    public void run() {
+    public Void call() {
         matrix[targetRow][column] *= eliminationFactors[sourceRow][targetRow];
+        return null;
     }
 
     @Override

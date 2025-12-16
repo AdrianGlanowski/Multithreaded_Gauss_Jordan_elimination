@@ -1,6 +1,8 @@
 package operations;
 
-public abstract class AbstractOperation implements Runnable{
+import java.util.concurrent.Callable;
+
+public abstract class AbstractOperation implements Callable<Void> {
     protected int sourceRow;
     protected char operationSymbol;
     protected double[][] matrix;

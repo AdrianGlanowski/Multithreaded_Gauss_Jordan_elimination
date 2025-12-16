@@ -14,8 +14,9 @@ public class NormalizationFactor extends AbstractOperation{
     }
 
     @Override
-    public void run() {
+    public Void call() {
         normalizationFactors[sourceRow] = 1/matrix[sourceRow][sourceRow];
+        return null;
     }
 
     @Override

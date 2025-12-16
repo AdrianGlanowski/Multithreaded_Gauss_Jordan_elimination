@@ -15,8 +15,9 @@ public class NormalizeElement extends AbstractOperation{
     }
 
     @Override
-    public void run() {
+    public Void call() {
         matrix[sourceRow][column] *= normalizationFactors[sourceRow];
+        return null;
     }
 
     @Override
