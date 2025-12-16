@@ -7,7 +7,7 @@ public class FindFactor extends AbstractOperation {
     */
     private final int targetRow;
 
-    public FindFactor(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors, int sourceRow, int targetRow){
+    public FindFactor(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors, int sourceRow, int targetRow){
         super(matrix, eliminationFactors, normalizationFactors);
         this.sourceRow = sourceRow;
         this.targetRow = targetRow;
@@ -15,8 +15,12 @@ public class FindFactor extends AbstractOperation {
     }
 
     @Override
-    public void run() {
-        eliminationFactors[sourceRow][targetRow] = matrix[sourceRow][sourceRow]/matrix[targetRow][sourceRow];
+    public Void call() {
+        if (Math.abs(matrix[targetRow][sourceRow]) < 1e-32)
+            eliminationFactors[sourceRow][targetRow] = null;
+        else
+            eliminationFactors[sourceRow][targetRow] = matrix[sourceRow][sourceRow]/matrix[targetRow][sourceRow];
+        return null;
     }
 
     @Override

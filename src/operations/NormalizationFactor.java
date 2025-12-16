@@ -7,15 +7,16 @@ public class NormalizationFactor extends AbstractOperation{
     */
 
 
-    public NormalizationFactor(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors, int sourceRow){
+    public NormalizationFactor(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors, int sourceRow){
         super(matrix, eliminationFactors, normalizationFactors);
         this.sourceRow = sourceRow;
         this.operationSymbol = 'D';
     }
 
     @Override
-    public void run() {
+    public Void call() {
         normalizationFactors[sourceRow] = 1/matrix[sourceRow][sourceRow];
+        return null;
     }
 
     @Override

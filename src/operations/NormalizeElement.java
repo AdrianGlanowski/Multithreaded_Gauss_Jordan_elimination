@@ -7,7 +7,7 @@ public class NormalizeElement extends AbstractOperation{
     */
 
     private final int column;
-    public NormalizeElement(double[][] matrix, double[][] eliminationFactors, double[] normalizationFactors, int sourceRow, int column){
+    public NormalizeElement(double[][] matrix, Double[][] eliminationFactors, Double[] normalizationFactors, int sourceRow, int column){
         super(matrix, eliminationFactors, normalizationFactors);
         this.sourceRow = sourceRow;
         this.column = column;
@@ -15,8 +15,9 @@ public class NormalizeElement extends AbstractOperation{
     }
 
     @Override
-    public void run() {
+    public Void call() {
         matrix[sourceRow][column] *= normalizationFactors[sourceRow];
+        return null;
     }
 
     @Override
