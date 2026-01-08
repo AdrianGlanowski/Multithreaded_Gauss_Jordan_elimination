@@ -16,6 +16,7 @@ public class FindFactor extends AbstractOperation {
 
     @Override
     public Void call() {
+        //if target element is 0, then there is no need for multiplying, null is also a reason to use Double instead of double
         if (Math.abs(matrix[targetRow][sourceRow]) < 1e-32)
             eliminationFactors[sourceRow][targetRow] = null;
         else
