@@ -20,6 +20,7 @@ public class MultiplyElement extends AbstractOperation{
 
     @Override
     public Void call() {
+        //target element is 0 and there is no need for row multiplying
         if (eliminationFactors[sourceRow][targetRow] == null)
             return null;
         else

@@ -18,10 +18,11 @@ public class SubtractElement extends AbstractOperation{
 
     @Override
     public Void call() {
+        //target element is 0 and there is no need for row multiplying
         if (eliminationFactors[sourceRow][targetRow] != null)
             if (column != sourceRow)
                 matrix[targetRow][column] -= matrix[sourceRow][column];
-            else
+            else //it is known for those elements to be 0 after subtracting
                 matrix[targetRow][column] = 0; //stability
         return null;
     }
