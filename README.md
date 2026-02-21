@@ -5,7 +5,7 @@ Multithreaded Gauss Jordan elimination in Java.
 ---
 ## Idea
 
-Full theory used in implementation is gathered in [pdf](Multithreaded_gauss_elimination.pdf), unfortunately due to nature of a subject, only in polish.
+Full theory used in implementation is gathered in [pdf](theory/Multithreaded_gauss_elimination.pdf), unfortunately due to nature of a subject, only in polish.
 
 ### Operations
 Divide elimination of martix $M$ into [basic operations](src/operations):
