@@ -79,4 +79,7 @@ $$ \large[\{D_{1}, D_{2}, ..., D_{n} \}]_{\equiv^{+}_{I}}^{\space\space\space\fr
 $$ \large[\{E_{11}, E_{1(n+1)}, E_{22}, E_{2(n+1)}, ..., E_{nn}, E_{n(n+1)} \}] $$
 
 ### Diekert's graph
+Operations on the same height can be done concurrently without synchronization.
+\
+\
 ![graph](theory/diekert_graph.png)
