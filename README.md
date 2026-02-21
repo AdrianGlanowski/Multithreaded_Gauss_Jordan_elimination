@@ -1,7 +1,7 @@
 # Multithreaded Gauss-Jordan elimination
 Multithreaded Gauss Jordan elimination in Java.
 
-*Note: This implementation does not opt for best speed nor space performance, the target is mostly educational value, but also to perform as little operations as possible and do it without using synchronization blocks.*
+*Note: This implementation does not prioritize speed or space efficiency; its primary goal is educational value. It also aims to perform as few operations as possible and does so without using synchronization blocks.*
 ---
 ## Idea
 
