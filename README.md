@@ -1,8 +1,8 @@
 # Multithreaded Gauss-Jordan elimination
 Multithreaded Gauss Jordan elimination in Java for square matrices.
 
-*Note: This implementation does not prioritize speed or space efficiency; its primary goal is educational value. It also aims to perform as few operations as possible and does so without using synchronization blocks.*
----
+**Note: This implementation does not prioritize speed or space efficiency; its primary goal is educational value. It also aims to perform as few operations as possible and does so without using synchronization blocks.**
+
 ## Idea
 
 Full theory used in implementation is gathered in [pdf](theory/Multithreaded_gauss_elimination.pdf), unfortunately due to nature of a subject, only in polish.
