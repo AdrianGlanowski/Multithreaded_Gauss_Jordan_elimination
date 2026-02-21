@@ -5,32 +5,32 @@ Multithreaded Gauss Jordan elimination in Java.
 ---
 ## Idea
 
-Full theory used in implementation is gathered in [pdf](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/Multithreaded_gauss_elimination.pdf), unfortunately due to nature of a subject, only in polish.
+Full theory used in implementation is gathered in [pdf](Multithreaded_gauss_elimination.pdf), unfortunately due to nature of a subject, only in polish.
 
 ### Operations
-Divide elimination of martix $M$ into [basic operations](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/tree/main/src/operations):
+Divide elimination of martix $M$ into [basic operations](src/operations):
 
-- $A$ - [FindFactor](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/src/operations/FindFactor.java) - 
+- $A$ - [FindFactor](src/operations/FindFactor.java) - 
 Operation $A_{ik}$ represents finding factor that will be needed while subtracting row $i$ from row $k$.
 
 $$ A_{ik} = \frac{M_{ii}}{M_{ki}} $$
 
-- $B$ - [MultiplyElement](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/src/operations/MultiplyElement.java) - 
+- $B$ - [MultiplyElement](src/operations/MultiplyElement.java) - 
 Operation $B_{ijk}$ represents multiplying element $M_{ki}$ by already calculated factor in corresponding FindFactor operation.
 
 $$ M_{kj} \space *= A_{ij} $$
 
-- $C$ - [SubtractElement](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/src/operations/SubtractElement.java) - 
+- $C$ - [SubtractElement](src/operations/SubtractElement.java) - 
 Operation $C_{ijk}$ represents subtracting $j$ column in $i$ row from $j$ column in $k$ row.
 
 $$ M_{jk} \space -= M_{ik} $$
 
-- $D$ - [NormalizationFactor](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/src/operations/NormalizationFactor.java) - 
+- $D$ - [NormalizationFactor](src/operations/NormalizationFactor.java) - 
 Operation $D_{i}$ represents finding factor that will be needed for normalizing for $i$ row.
 
 $$ D_i = \frac{1}{M_{ii}} $$
 
-- $E$ - [NormalizeElement](https://github.com/AdrianGlanowski/Multithreaded_Gauss_Jordan_elimination/blob/main/src/operations/NormalizeElement.java) - 
+- $E$ - [NormalizeElement](src/operations/NormalizeElement.java) - 
 Operation $E_{ij}$ represents multiplying element by normalization factor.
 
 $$ M_{ij} \space *= D_i $$
